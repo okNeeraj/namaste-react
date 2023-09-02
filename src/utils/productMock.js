@@ -1,27 +1,4 @@
-import React from "react";
-import ReactDom from "react-dom/client";
-
-const ProductCard = (props) => {
-	const { id, title, category, image, price } = props.product;
-	return (
-		<div className="product-item">
-			<div className="product-thumb">
-				<img src={image} />
-			</div>
-			<div className="product-body">
-				<h3 className="product-title">{title}</h3>
-				<p className="product-desc">{category}</p>
-
-				<div className="product-footer">
-					<div className="product-price">Rs. <span>{price}</span></div>
-					<button className="btn btn-primary">Buy Now</button>
-				</div>
-			</div>
-		</div>
-	)
-};
-
-const productList = [
+export const productList = [
 	{
 		"id": 1,
 		"title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
@@ -203,19 +180,3 @@ const productList = [
 		"rating": { "rate": 3.6, "count": 145 }
 	}
 ];
-
-const ProductList = () => {
-	return (
-		<div className="product-section">
-			<h1 className="heading">Product List</h1>
-			<div className="product-list">
-				{
-					productList.map(product => <ProductCard key={product.id} product={product} />)
-				}
-			</div>
-		</div>
-	)
-};
-
-const root = ReactDom.createRoot(document.getElementById('root'));
-root.render(<ProductList />);
