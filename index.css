@@ -39,7 +39,7 @@ main {
 	justify-content: space-between;
 	background-color: #222222;
 	color: #fff;
-	padding: 30px 12px;
+	padding: 30px 5%;
 }
 
 .footer a {
@@ -85,6 +85,7 @@ main {
 	justify-content: space-between;
 	padding: 0 12px;
 	box-shadow: 0 24px 24px #f1f1f1;
+	min-height: 80px;
 }
 
 .logo-container {
@@ -105,6 +106,8 @@ main {
 }
 
 .heading {
+	font-size: 20px;
+	font-weight: bold;
 	/* margin-bottom: 28px; */
 }
 
@@ -210,5 +213,15 @@ main {
 
 /* Product Filters */
 .product-filters {
-	padding: 12px;
+	padding: 0px 30px 12px 12px;
+}
+
+
+.placeholder {
+	cursor: default;
+	background-color: #e7e5e5;
+}
+
+.shimmer-card {
+	flex: 0 0 calc(20% - 16px);
 }
