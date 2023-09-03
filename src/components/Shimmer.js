@@ -20,42 +20,37 @@ export const ShimmerCard = () => {
 
 export const ProductShimmer = () => {
 	return (
-		<div className="product-section">
-			<div className="product-header">
-				<h1 className="heading">Product List</h1>
+		<div className="product-container">
+			<div className="product-filters">
+				<p className="card-text placeholder-glow">
+					<span className="placeholder col-10"></span>
+					<span className="placeholder col-7"></span>
+					<span className="placeholder col-8"></span>
+				</p>
+
+				<p className="card-text placeholder-glow mt-4">
+					<span className="placeholder col-10"></span>
+					<span className="placeholder col-7"></span>
+					<span className="placeholder col-8"></span>
+				</p>
+
+				<p className="card-text placeholder-glow mt-4">
+					<span className="placeholder col-7"></span>
+					<span className="placeholder col-11"></span>
+					<span className="placeholder col-10"></span>
+				</p>
 			</div>
-			<div className="product-container">
-				<div className="product-filters">
-					<p className="card-text placeholder-glow">
-						<span className="placeholder col-10"></span>
-						<span className="placeholder col-7"></span>
-						<span className="placeholder col-8"></span>
-					</p>
-
-					<p className="card-text placeholder-glow mt-4">
-						<span className="placeholder col-10"></span>
-						<span className="placeholder col-7"></span>
-						<span className="placeholder col-8"></span>
-					</p>
-
-					<p className="card-text placeholder-glow mt-4">
-						<span className="placeholder col-7"></span>
-						<span className="placeholder col-11"></span>
-						<span className="placeholder col-10"></span>
-					</p>
-				</div>
-				<div className="product-list">
-					<ShimmerCard />
-					<ShimmerCard />
-					<ShimmerCard />
-					<ShimmerCard />
-					<ShimmerCard />
-					<ShimmerCard />
-					<ShimmerCard />
-					<ShimmerCard />
-					<ShimmerCard />
-					<ShimmerCard />
-				</div>
+			<div className="product-list">
+				<ShimmerCard />
+				<ShimmerCard />
+				<ShimmerCard />
+				<ShimmerCard />
+				<ShimmerCard />
+				<ShimmerCard />
+				<ShimmerCard />
+				<ShimmerCard />
+				<ShimmerCard />
+				<ShimmerCard />
 			</div>
 		</div>
 	)

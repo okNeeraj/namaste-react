@@ -2,7 +2,7 @@ body {
 	margin: 0;
 	padding: 0;
 	font-size: 14px;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Lato', sans-serif;
 }
 
 *,
@@ -117,7 +117,7 @@ main {
 
 .product-container {
 	display: grid;
-	grid-template-columns: 200px auto;
+	grid-template-columns: 250px auto;
 }
 
 .product-header {
@@ -171,6 +171,7 @@ main {
 	-webkit-box-orient: vertical;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	font-weight: 700;
 }
 
 .product-desc {
@@ -186,7 +187,7 @@ main {
 }
 
 .product-price span {
-	font-size: 18px;
+	font-size: 16px;
 }
 
 .ratings {
