@@ -1,38 +1,82 @@
-import { useState } from "react";
-import { productList } from "../utils/productMock";
+import { useEffect, useState } from "react";
+import { ProductShimmer } from "./Shimmer";
+import { productList } from "../utils/mockData";
 import ProductCard from "./ProductCard";
-import ProductFilter from "./ProductFilters";
 
 const ProductList = () => {
-	const [products, setProducts] = useState(productList);
+	const [products, setProducts] = useState([]);
+	const [filterProducts, setFilterProducts] = useState([]);
+	const [searchText, setSearchText] = useState('');
 
+	useEffect(() => {
+		fetchProducts();
+	}, [])
 
-	return (
-		<div className="product-section">
-			<div className="product-header">
-				<h1 className="heading">Product List</h1>
-				{/* <ProductFilter /> */}
-			</div>
-			<div className="product-container">
-				<div className="product-filters">
+	const fetchProducts = async () => {
+		// const data = await fetch("https://fakestoreapi.com/products");
+		// const products = await data.json();
+		// setProducts(productList)
 
-					<button
+		setTimeout(() => {
+			setProducts(productList)
+			setFilterProducts(productList)
+		}, 1000);
+	}
+
+	return products.length === 0 ? <ProductShimmer /> : (
+		<div className="product-container">
+			<div className="product-filters">
+				<h6 className="mb-3 border-bottom pb-2 d-flex justify-content-between">
+					<span>Filters</span>
+					<span
+						className="text-primary"
+						style={{ cursor: 'pointer' }}
 						onClick={() => {
-							const filteredProducts = products.filter(
-								(product) => product.rating.rate > 4
-							);
-							setProducts(filteredProducts)
+							setFilterProducts(productList)
+							setSearchText('')
 						}}
-
 					>
-						Above 4 Star
+						Reset
+					</span>
+				</h6>
+				<div className="product-search d-flex gap-2 mb-4">
+					<input
+						type="text"
+						className="form-control"
+						placeholder="Search Product"
+						value={searchText}
+						onChange={(e) => {
+							setSearchText(e.target.value)
+						}}
+					/>
+					<button className="btn btn-primary d-flex" onClick={() => {
+						const filteredSearch = products.filter((product) =>
+							product.title.toLowerCase().includes(searchText.toLowerCase())
+						)
+						filteredSearch.length !== 0 ? setFilterProducts(filteredSearch) : ''
+					}}>
+						<span className="material-symbols-outlined">
+							search
+						</span>
 					</button>
 				</div>
-				<div className="product-list">
-					{
-						products.map(product => <ProductCard key={product.id} product={product} />)
-					}
-				</div>
+				<button
+					className="btn btn-sm btn-secondary w-100"
+					onClick={() => {
+						const filteredProducts = products.filter(
+							(product) => product.rating.rate > 4
+						);
+						setFilterProducts(filteredProducts)
+					}}
+
+				>
+					Above 4 Star
+				</button>
+			</div>
+			<div className="product-list">
+				{
+					filterProducts.map(product => <ProductCard key={product.id} product={product} />)
+				}
 			</div>
 		</div>
 	)
