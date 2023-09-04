@@ -1,9 +1,11 @@
 import React from "react";
 import ReactDom from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
+import BestSeller from "./components/BestSeller";
 
 const App = () => {
 	return (
@@ -15,5 +17,16 @@ const App = () => {
 	)
 }
 
+const router = createBrowserRouter([
+	{
+		path: '/',
+		element: <App />
+	},
+	{
+		path: 'best-seller',
+		element: <BestSeller />
+	}
+])
+
 const root = ReactDom.createRoot(document.getElementById('root'));
-root.render(<App />);
+root.render(<RouterProvider router={router} />);
