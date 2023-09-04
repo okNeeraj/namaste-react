@@ -3,6 +3,7 @@ import ReactDom from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Header from "./components/Header";
+import Error from "./components/Error";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
 import BestSeller from "./components/BestSeller";
@@ -20,7 +21,8 @@ const App = () => {
 const router = createBrowserRouter([
 	{
 		path: '/',
-		element: <App />
+		element: <App />,
+		errorElement: <Error />
 	},
 	{
 		path: 'best-seller',
