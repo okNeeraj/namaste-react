@@ -1,25 +1,38 @@
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 
 import { productDetailMock } from "../../utils/mockData";
 import { ProductShimmerDetail } from "../Shimmer";
 
 const ProductDetail = () => {
 	const [productDetail, setProductDetails] = useState(null);
+	const location = useLocation();
 	const { productId } = useParams();
+
 	useEffect(() => {
 		fetchProductDetails();
-	}, [])
+	}, []);
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, [location.pathname]);
 
 	const fetchProductDetails = async () => {
-		const response = await fetch(`https://fakestoreapi.com/products/${productId}`);
-		const data = await response.json();
-		setProductDetails(data);
+		try {
+			const response = await fetch(`https://fakestoreapi.com/products/${productId}`);
+			if (!response.ok) {
+				throw new Error(`Failed to fetch product details. Status: ${response.status}`);
+			}
+			const data = await response.json();
+			setProductDetails(data);
+		} catch (error) {
+			if (error) {
+				setProductDetails(productDetailMock[0]);
+			}
+			console.error(error);
+		}
+	};
 
-		// setTimeout(() => {
-		// 	setProductDetails(productDetailMock[0]);
-		// }, 1000);
-	}
 
 	if (productDetail === null) {
 		return <ProductShimmerDetail />

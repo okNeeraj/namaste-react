@@ -13,15 +13,22 @@ const ProductList = () => {
 	}, [])
 
 	const fetchProducts = async () => {
-		// const data = await fetch("https://fakestoreapi.com/products");
-		// const products = await data.json();
-		// setProducts(productList)
-
-		setTimeout(() => {
-			setProducts(productList)
-			setFilterProducts(productList)
-		}, 1000);
-	}
+		try {
+			const response = await fetch("https://fakestoreapi.com/products");
+			if (!response.ok) {
+				throw new Error(`Failed to fetch products. Status: ${response.status}`);
+			}
+			const products = await response.json();
+			setProducts(products)
+			setFilterProducts(products)
+		} catch (error) {
+			if (error) {
+				setProducts(productList)
+				setFilterProducts(productList)
+			}
+			console.error(error);
+		}
+	};
 
 	return products.length === 0 ? <ProductShimmer /> : (
 		<div className="product-container">
