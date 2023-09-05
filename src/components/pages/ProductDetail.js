@@ -1,53 +1,70 @@
 import { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
+
+import { productDetailMock } from "../../utils/mockData";
+import { ProductShimmerDetail } from "../Shimmer";
 
 const ProductDetail = () => {
 	const [productDetail, setProductDetails] = useState(null);
+	const { productId } = useParams();
 	useEffect(() => {
-		// fetchProductDetails();
+		fetchProductDetails();
 	}, [])
 
 	const fetchProductDetails = async () => {
-		const data = await fetch('https://fakestoreapi.com/products/1');
-		const productDetail = await data.json();
-		setProductDetails(productDetail);
+		const response = await fetch(`https://fakestoreapi.com/products/${productId}`);
+		const data = await response.json();
+		setProductDetails(data);
+
+		// setTimeout(() => {
+		// 	setProductDetails(productDetailMock[0]);
+		// }, 1000);
 	}
-	// const { id, title, category, image, price, rating } = productDetail;
+
+	if (productDetail === null) {
+		return <ProductShimmerDetail />
+	}
+	const { title, category, image, price, rating, description } = productDetail;
 	return (
 		<div className="page-section product-details">
 			<div className="page-header">
 				<nav aria-label="breadcrumb">
 					<ol className="breadcrumb">
-						<li className="breadcrumb-item"><a href="#">Home</a></li>
-						<li className="breadcrumb-item"><a href="#">Product</a></li>
-						<li className="breadcrumb-item active" aria-current="page">Product Title</li>
+						<li className="breadcrumb-item">
+							<Link to={''}>Home</Link>
+						</li>
+						<li className="breadcrumb-item">
+							<Link to={''}>Products</Link>
+						</li>
+						<li className="breadcrumb-item active" aria-current="page">{title}</li>
 					</ol>
 				</nav>
 			</div>
 			<div className="row">
 				<div className="col-5">
 					<div className="product-thumb">
-						<img src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" />
+						<img src={image} />
 					</div>
 				</div>
 				<div className="col-7">
 					<div className="product-info">
 						<div className="pr-card">
 							<h1 className="heading">
-								<span>{ } Product Title</span>
-								<span className="mini-heading">Get best deals from best Seller</span>
+								<span>{title}</span>
+								<span className="mini-heading">{category}</span>
 							</h1>
 							<div className="ratings">
-								<span className="rating-rate">4.5</span>
+								<span className="rating-rate">{rating.rate}</span>
 								<span className="rating-icon material-symbols-outlined">star</span>
-								<span className="rating-count">345 Ratings</span>
+								<span className="rating-count">{rating.count} Ratings</span>
 							</div>
 
 
 						</div>
 						<div className="pr-card border-0">
 							<div className="product-price">
-								Rs. <span>3456</span>
-								<span className="off-text">( 49 % OFF)</span>
+								Rs. <span>{price}</span>
+								<span className="off-text">( {Math.floor(Math.random() * (74 - 2 + 1)) + 2} % OFF)</span>
 							</div>
 							<div className="price-note">inclusive of all taxes</div>
 						</div>
@@ -64,7 +81,7 @@ const ProductDetail = () => {
 						</div>
 						<div className="product-desc">
 							<h4 className="mb-2">Product Details</h4>
-							<p>Roadster size chart was good as expceted and as always, it was a great product, but it was a bit loss which is a good and bad thing a a same time. It was to comfertable and at the same time a bit lose, and on the positive side from my prospective I love a bit loss clothes. So i found it a great product for me at this price piont of view</p>
+							<p>{description}</p>
 						</div>
 					</div>
 				</div>
