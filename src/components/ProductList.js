@@ -29,8 +29,8 @@ const ProductList = () => {
 				<h6 className="mb-3 border-bottom pb-2 d-flex justify-content-between">
 					<span>Filters</span>
 					<span
-						className="text-primary"
-						style={{ cursor: 'pointer' }}
+						className="text-secondary"
+						style={{ cursor: 'pointer', fontSize: '12px' }}
 						onClick={() => {
 							setFilterProducts(productList)
 							setSearchText('')

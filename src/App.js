@@ -1,18 +1,25 @@
 import React from "react";
 import ReactDom from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 import Header from "./components/Header";
-import Error from "./components/Error";
-import Main from "./components/Main";
 import Footer from "./components/Footer";
-import BestSeller from "./components/BestSeller";
+
+import {
+	Home,
+	BestSeller,
+	Electronics,
+	ProductDetail,
+	Error
+} from './components/pages';
 
 const App = () => {
 	return (
 		<>
 			<Header />
-			<Main />
+			<main className="page-container">
+				<Outlet />
+			</main>
 			<Footer />
 		</>
 	)
@@ -22,11 +29,25 @@ const router = createBrowserRouter([
 	{
 		path: '/',
 		element: <App />,
+		children: [
+			{
+				path: '/',
+				element: <Home />
+			},
+			{
+				path: 'best-seller',
+				element: <BestSeller />
+			},
+			{
+				path: 'product/:productId',
+				element: <ProductDetail />
+			},
+			{
+				path: 'electronics',
+				element: <Electronics />
+			}
+		],
 		errorElement: <Error />
-	},
-	{
-		path: 'best-seller',
-		element: <BestSeller />
 	}
 ])
 

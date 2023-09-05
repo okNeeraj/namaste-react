@@ -9,7 +9,7 @@ const Error = () => {
 					<div className="col-12">
 						<div className="col-12 text-center">
 							<div className="four_zero_four_bg">
-								<h1 className="text-center">404</h1>
+								<h1 className="text-center">{error.status}</h1>
 							</div>
 
 							<div className="contant_box_404">
