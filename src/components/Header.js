@@ -17,7 +17,14 @@ const Header = () => {
 				<Link to={'/'} className='nav-link'>Sports</Link>
 			</div>
 			<div className='nav-list'>
-				<a href='#' className='nav-link'>
+				<Link to={'/profile'} className='nav-link d-flex gap-2 me-2'>
+					<span className="material-symbols-outlined">
+						account_circle
+					</span>
+					<span>Neeraj</span>
+				</Link>
+
+				<a href='#' className='nav-link me-3'>
 					<span className="material-symbols-outlined">
 						shopping_cart
 					</span>

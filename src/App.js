@@ -11,7 +11,8 @@ import {
 	Electronics,
 	ProductDetail,
 	Error,
-	ProductList
+	ProductList,
+	UserClass,
 } from './components/pages';
 
 const App = () => {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
 			{
 				path: 'electronics',
 				element: <Electronics />
+			},
+			{
+				path: 'profile',
+				element: <UserClass />
 			}
 		],
 		errorElement: <Error />
