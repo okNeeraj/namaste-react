@@ -425,6 +425,14 @@ main {
 	padding-bottom: 10px;
 }
 
+.user-details small {
+	display: block;
+	font-weight: 300;
+	margin-top: 7px;
+	font-size: 12px;
+	margin-bottom: 12px;
+}
+
 .user-name {
 	font-size: 22px;
 }

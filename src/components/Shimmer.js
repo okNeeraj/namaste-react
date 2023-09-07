@@ -101,3 +101,20 @@ export const ProductShimmerDetail = () => {
 		</div>
 	)
 }
+
+export const ProfileShimmer = () => {
+	return (
+		<div className="user-details placeholder-glow">
+			<span className="placeholder col-7"></span>
+			<span className="placeholder col-12"></span>
+			<span className="placeholder col-8"></span>
+			<span className="placeholder col-9"></span>
+			<span className="placeholder col-4"></span>
+			<ul className="list-group border-0 px-0 mb-3">
+				<li className="list-group-item border-0 px-0">
+					<span className="placeholder col-3"></span>
+				</li>
+			</ul>
+		</div>
+	)
+}

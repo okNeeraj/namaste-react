@@ -3,9 +3,20 @@ import React from "react";
 class OrderCard extends React.Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			count: 0,
+		}
+		// console.log('Child constructor')
+	}
+
+	componentDidMount() {
+		// console.log('Child componentDidMount')
 	}
 
 	render() {
+		const { title } = this.props;
+		const { count } = this.state;
+		// console.log('Child Render')
 		return (
 			<div className="card mb-3 p-3">
 				<div className="row g-0">
@@ -16,13 +27,22 @@ class OrderCard extends React.Component {
 					</div>
 					<div className="col-md-10">
 						<div className="card-body">
-							<h5 className="card-title">Product Title</h5>
+							<h5 className="card-title">{title} - {count}</h5>
 							<p className="card-text">
 								This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
 							</p>
 							<p className="card-text">
 								<small className="text-muted">Order at 06 September 2023</small>
 							</p>
+							<button className="btn btn-primary"
+								onClick={() => {
+									this.setState({
+										count: this.state.count + 1
+									})
+								}}
+							>
+								Increase Count
+							</button>
 						</div>
 					</div>
 				</div>
