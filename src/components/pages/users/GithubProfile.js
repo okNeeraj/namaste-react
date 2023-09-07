@@ -14,7 +14,7 @@ class GithubProfile extends Component {
 				<small>{bio}</small>
 				<ul className="list-group border-0 px-0 mb-3">
 					<li className="list-group-item border-0 px-0">
-						<a href={html_url} className="active">{login}</a>
+						<a href={html_url} target='_blank' className="active">{login}</a>
 					</li>
 				</ul>
 			</div>

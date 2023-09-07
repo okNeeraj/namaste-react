@@ -17,6 +17,11 @@ class UserClass extends React.Component {
 		this.setState({
 			githubProfile: data,
 		});
+
+		/** Set Timer when component mounted */
+		// this.timer = setInterval(() => {
+		// 	console.log('Namaste React OP')
+		// }, 1000);
 		// console.log('Grand Parent componentDidMount')
 	}
 
@@ -25,7 +30,9 @@ class UserClass extends React.Component {
 	}
 
 	componentWillUnmount() {
-		// console.log('Grand Parent componentWillUnmount')
+		/** Clear Timer when component Unmounted (Leave the page)  */
+		// clearInterval(this.timer)
+		// console.log('UserClass componentWillUnmount')
 	}
 
 	render() {

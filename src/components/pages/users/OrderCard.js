@@ -34,7 +34,7 @@ class OrderCard extends React.Component {
 							<p className="card-text">
 								<small className="text-muted">Order at 06 September 2023</small>
 							</p>
-							<button className="btn btn-primary"
+							<button className="btn btn-primary mt-4	"
 								onClick={() => {
 									this.setState({
 										count: this.state.count + 1

@@ -10,7 +10,20 @@ const ProductList = () => {
 
 	useEffect(() => {
 		fetchProducts();
+
+		/** Set Timer inside useEffect when mounted */
+		// const timer = setInterval(() => {
+		// 	console.log('ProductList - useEffect')
+		// }, 1000);
+
+		return () => {
+			/** Clear Timer inside useEffect when unmounted (leave the page) */
+			// clearInterval(timer)
+			// console.log('ProductList - Unmount inside useEffect')
+		}
 	}, [])
+
+	// console.log('ProductList')
 
 	const fetchProducts = async () => {
 		try {
