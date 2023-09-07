@@ -123,6 +123,12 @@ main {
 	/* margin-bottom: 28px; */
 }
 
+.sub-heading {
+	font-size: 19px;
+	font-weight: 700;
+	margin-bottom: 16px;
+}
+
 .mini-heading {
 	display: block;
 	font-size: 14px;
@@ -375,4 +381,58 @@ main {
 .price-note {
 	font-size: 12px;
 	color: #9d9d9d;
+}
+
+.card {
+	box-shadow: 0px 2px 15px #e5e6eb;
+	border: 0;
+	transition: 0.3s;
+}
+
+.card:hover {
+	box-shadow: 0px 2px 15px #bfc0c4;
+}
+
+.user-profile .list-group-item {
+	padding: 0;
+	margin-bottom: 6px;
+}
+
+.user-profile .list-group-item h6 {
+	font-weight: bold;
+	font-size: 14px;
+	margin-bottom: 5px;
+}
+
+.user-profile .list-group-item a {
+	display: inline-block;
+	padding: 5px 12px;
+	color: #747677;
+	font-size: 13px;
+	border-radius: 3px;
+	transition: 0.3s;
+}
+
+.user-profile .list-group-item a:hover,
+.user-profile .list-group-item a.active {
+	background: #e8eaed;
+	color: #000;
+}
+
+.user-details {
+	margin-bottom: 20px;
+	border-bottom: 1px solid #eee;
+	padding-bottom: 10px;
+}
+
+.user-details small {
+	display: block;
+	font-weight: 300;
+	margin-top: 7px;
+	font-size: 12px;
+	margin-bottom: 12px;
+}
+
+.user-name {
+	font-size: 22px;
 }

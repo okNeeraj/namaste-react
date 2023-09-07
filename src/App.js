@@ -10,7 +10,9 @@ import {
 	BestSeller,
 	Electronics,
 	ProductDetail,
-	Error
+	Error,
+	ProductList,
+	UserClass,
 } from './components/pages';
 
 const App = () => {
@@ -40,7 +42,7 @@ const router = createBrowserRouter([
 			},
 			{
 				path: 'product',
-				element: <Home />
+				element: <ProductList />
 			},
 			{
 				path: 'product/:productId',
@@ -49,6 +51,10 @@ const router = createBrowserRouter([
 			{
 				path: 'electronics',
 				element: <Electronics />
+			},
+			{
+				path: 'profile',
+				element: <UserClass />
 			}
 		],
 		errorElement: <Error />
