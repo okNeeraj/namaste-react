@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { useOnlineStatus } from './utils/hooks';
 
 import {
 	Home,
@@ -16,7 +17,8 @@ import {
 } from './components/pages';
 
 const App = () => {
-	return (
+	const onlineStatus = useOnlineStatus();
+	return (onlineStatus === false) ? <div className="text-center mt-5 pt-5"><h1>Look like, you are offline 🔴</h1><p>Please check your internet connection.</p></div> : (
 		<>
 			<Header />
 			<main className="page-container">
