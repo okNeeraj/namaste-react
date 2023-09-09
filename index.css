@@ -168,6 +168,24 @@ main {
 	box-shadow: 0 4px 15px #eeeeee;
 }
 
+.hot-deal {
+	flex: 0 0 calc(20% - 16px);
+	position: relative;
+}
+
+.hot-label {
+	display: inline-block;
+	border: 1px solid;
+	background: #000;
+	padding: 4px 12px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	color: #ffff;
+	font-size: 9px;
+	border-radius: 0px 0px 0px 8px;
+}
+
 .product-item:hover {
 	box-shadow: 0 4px 15px #dcdddd;
 }
