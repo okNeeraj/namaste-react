@@ -44,10 +44,10 @@ const ProductDetail = () => {
 				<nav aria-label="breadcrumb">
 					<ol className="breadcrumb">
 						<li className="breadcrumb-item">
-							<Link to={''}>Home</Link>
+							<Link to={'../'}>Home</Link>
 						</li>
 						<li className="breadcrumb-item">
-							<Link to={''}>Products</Link>
+							<Link to={'../product'}>Products</Link>
 						</li>
 						<li className="breadcrumb-item active" aria-current="page">{title}</li>
 					</ol>

@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { ProductShimmer } from "../Shimmer";
 import { productList } from "../../utils/mockData";
-import ProductCard from "../ProductCard";
+import ProductCard, { WithHotLabel } from "../ProductCard";
 
 const ProductList = () => {
 	const [products, setProducts] = useState([]);
+	const [productsLimit, setProductsLimit] = useState(20);
 	const [filterProducts, setFilterProducts] = useState([]);
 	const [searchText, setSearchText] = useState('');
+	const HotProductCard = WithHotLabel(ProductCard);
 
 	useEffect(() => {
 		fetchProducts();
@@ -27,7 +29,7 @@ const ProductList = () => {
 
 	const fetchProducts = async () => {
 		try {
-			const response = await fetch("https://fakestoreapi.com/products");
+			const response = await fetch(`https://fakestoreapi.com/products?limit=${productsLimit}`);
 			if (!response.ok) {
 				throw new Error(`Failed to fetch products. Status: ${response.status}`);
 			}
@@ -102,7 +104,10 @@ const ProductList = () => {
 				</div>
 				<div className="product-list">
 					{
-						filterProducts.map(product => <ProductCard key={product.id} product={product} />)
+						filterProducts.map(product => (
+							product.rating.rate > 4.5 ?
+								<HotProductCard key={product.id} product={product} /> : <ProductCard key={product.id} product={product} />
+						))
 					}
 				</div>
 			</div>
