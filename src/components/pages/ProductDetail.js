@@ -3,11 +3,20 @@ import { Link, useParams, useLocation } from "react-router-dom";
 
 import { productDetailMock } from "../../utils/mockData";
 import { ProductShimmerDetail } from "../Shimmer";
+import ProductInfo from "../ProductInfo";
 
 const ProductDetail = () => {
 	const [productDetail, setProductDetails] = useState(null);
+	const [showIndex, setShowIndex] = useState(0);
 	const location = useLocation();
 	const { productId } = useParams();
+
+	const productInformation = [
+		{ id: 'ryffr', title: 'Return & Refund Policy', body: "This is the first item's accordion body. It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the .accordion-body, though the transition does limit overflow." },
+		{ id: 'tgfew', title: 'Specification', body: "You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the .accordion-body, though the transition does limit overflow." },
+		{ id: 'mytfe', title: 'Reviews', body: "Placeholder content for this accordion, which is intended to demonstrate the .accordion-flush class. This is the first item's accordion body." },
+		{ id: 'edgbe', title: 'Seller Information', body: "This is the first item's accordion body. It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables." },
+	];
 
 	useEffect(() => {
 		fetchProductDetails();
@@ -24,10 +33,10 @@ const ProductDetail = () => {
 				throw new Error(`Failed to fetch product details. Status: ${response.status}`);
 			}
 			const data = await response.json();
-			setProductDetails(data);
+			setProductDetails({ ...data, sections: productInformation });
 		} catch (error) {
 			if (error) {
-				setProductDetails(productDetailMock[0]);
+				setProductDetails({ ...productDetailMock[0], sections: productInformation });
 			}
 			console.error(error);
 		}
@@ -37,7 +46,8 @@ const ProductDetail = () => {
 	if (productDetail === null) {
 		return <ProductShimmerDetail />
 	}
-	const { title, category, image, price, rating, description } = productDetail;
+	const { title, category, image, price, rating, description, sections } = productDetail;
+
 	return (
 		<div className="page-section product-details">
 			<div className="page-header">
@@ -92,15 +102,26 @@ const ProductDetail = () => {
 								<span>WISHLIST</span>
 							</a>
 						</div>
-						<div className="product-desc">
+						<div className="product-desc mb-4">
 							<h4 className="mb-2">Product Details</h4>
 							<p>{description}</p>
 						</div>
+						{
+							sections.map((section, index) => {
+								return <ProductInfo
+									key={section.id}
+									data={section}
+									showItems={index === showIndex ? true : false}
+									setShowIndex={() => setShowIndex(index)}
+								/>;
+							})
+						}
+
 					</div>
 				</div>
-
 			</div>
 		</div>
 	)
 }
+
 export default ProductDetail;

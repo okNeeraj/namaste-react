@@ -467,3 +467,30 @@ main {
 .user-name {
 	font-size: 22px;
 }
+
+
+.accordion-card {
+	margin-bottom: 24px;
+	box-shadow: 0 0 15px #e2e5e7;
+}
+
+.accordion--header,
+.accordion--body {
+	padding: 12px 16px;
+}
+
+.accordion--title {
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.accordion--body {
+	border-top: 1px solid #f3f3f3;
+}
+
+.accordion--header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	cursor: pointer;
+}
