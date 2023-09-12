@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
 
+import UserContext from '../data/UserContext';
+
 const Header = () => {
+	const { loggedUser } = useContext(UserContext);
+
 	return (
 		<div className='header'>
 			<div className='logo-container'>
@@ -21,7 +25,7 @@ const Header = () => {
 					<span className="material-symbols-outlined">
 						account_circle
 					</span>
-					<span>Neeraj</span>
+					<span>{loggedUser}</span>
 				</Link>
 
 				<a href='#' className='nav-link me-3'>
