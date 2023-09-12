@@ -7,7 +7,7 @@ import ProductInfo from "../ProductInfo";
 
 const ProductDetail = () => {
 	const [productDetail, setProductDetails] = useState(null);
-	const [showIndex, setShowIndex] = useState(0);
+	const [showIndex, setShowIndex] = useState(null);
 	const location = useLocation();
 	const { productId } = useParams();
 
@@ -111,12 +111,11 @@ const ProductDetail = () => {
 								return <ProductInfo
 									key={section.id}
 									data={section}
-									showItems={index === showIndex ? true : false}
+									showIndex={showIndex === index ? true : false}
 									setShowIndex={() => setShowIndex(index)}
-								/>;
+								/>
 							})
 						}
-
 					</div>
 				</div>
 			</div>
