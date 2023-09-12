@@ -486,6 +486,12 @@ main {
 
 .accordion--body {
 	border-top: 1px solid #f3f3f3;
+	height: auto;
+}
+
+.accordion-card:not(.active) .accordion--body {
+	display: none;
+	height: 0;
 }
 
 .accordion--header {
