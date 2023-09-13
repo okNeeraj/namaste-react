@@ -1,5 +1,6 @@
 import { Component, useEffect, useState } from 'react';
 import { ProfileShimmer } from '../../Shimmer';
+import UserContext from '../../../data/UserContext';
 
 class GithubProfile extends Component {
 	constructor(props) {
@@ -16,8 +17,19 @@ class GithubProfile extends Component {
 					<li className="list-group-item border-0 px-0">
 						<a href={html_url} target='_blank' className="active">{login}</a>
 					</li>
+					<li className="list-group-item border-0 px-0">
+						<UserContext.Consumer>
+							{(data) => (
+								<small>
+									Logged in as :
+									<strong>{data.loggedUser}</strong>
+								</small>
+
+							)}
+						</UserContext.Consumer>
+					</li>
 				</ul>
-			</div>
+			</div >
 		)
 	}
 }
