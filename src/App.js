@@ -52,6 +52,7 @@ const Electronics = lazy(() => import('./components/pages/Electronics'));
 const ProductList = lazy(() => import('./components/pages/ProductList'));
 const ProductDetail = lazy(() => import('./components/pages/ProductDetail'));
 const UserClass = lazy(() => import('./components/pages/UserClass'));
+const Cart = lazy(() => import('./components/pages/Cart'));
 const Error = lazy(() => import('./components/pages/Error'));
 
 const App = () => {
@@ -86,6 +87,10 @@ const router = createBrowserRouter([
 			{
 				path: '/',
 				element: <Home />
+			},
+			{
+				path: 'checkout',
+				element: <Cart />
 			},
 			{
 				path: 'best-seller',

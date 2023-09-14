@@ -500,3 +500,56 @@ main {
 	justify-content: space-between;
 	cursor: pointer;
 }
+
+.cart-count {
+	background: #880351;
+	position: absolute;
+	width: 18px;
+	height: 18px;
+	font-size: 9px;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	top: -8px;
+	border-radius: 50%;
+	color: #fff;
+}
+
+.checkout-page .list-group {
+	--bs-list-group-border-width: 0;
+	border-radius: 0;
+}
+
+.place-order {
+	border-top: 1px dashed #ccc !important;
+	margin: 16px;
+	padding: 12px 0;
+}
+
+.checkout-page .list-group-item {
+	font-size: 12px;
+}
+
+.total-price {
+	font-weight: 600;
+	font-size: 16px;
+}
+
+.checkout-page .product-body {
+	flex: auto;
+}
+
+.checkout-page .product-footer {
+	display: inline-flex;
+	gap: 50px;
+	margin-top: 8px;
+}
+
+.checkout-page .product-item {
+	box-shadow: none;
+	margin-bottom: 12px;
+}
+
+.checkout-page .product-item:hover {
+	border-color: #ccc;
+}

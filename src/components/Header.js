@@ -28,11 +28,12 @@ const Header = () => {
 					<span>{loggedUser}</span>
 				</Link>
 
-				<a href='#' className='nav-link me-3'>
+				<Link to={'/checkout'} className='nav-link me-3 position-relative'>
 					<span className="material-symbols-outlined">
 						shopping_cart
 					</span>
-				</a>
+					<span className='cart-count'>1</span>
+				</Link>
 			</div>
 		</div>
 	)
