@@ -45,6 +45,8 @@ import { useOnlineStatus } from './utils/hooks';
  */
 
 import HocComponent from "./components/hoc/HocComponent";
+import { Provider } from "react-redux";
+import appStore from "./store/appStore";
 
 const Home = lazy(() => import('./components/pages/Home'));
 const BestSeller = lazy(() => import('./components/pages/BestSeller'));
@@ -58,16 +60,15 @@ const Error = lazy(() => import('./components/pages/Error'));
 const App = () => {
 	const onlineStatus = useOnlineStatus();
 	return (onlineStatus === false) ? <div className="text-center mt-5 pt-5"><h1>Look like, you are offline 🔴</h1><p>Please check your internet connection.</p></div> : (
-		<>
+		<Provider store={appStore}>
 			<Header />
-			{/* <HocComponent /> */}
 			<main className="page-container">
 				<Suspense fallback={<Loading />}>
 					<Outlet />
 				</Suspense>
 			</main>
 			<Footer />
-		</>
+		</Provider>
 	)
 }
 

@@ -19,10 +19,10 @@ class GithubProfile extends Component {
 					</li>
 					<li className="list-group-item border-0 px-0">
 						<UserContext.Consumer>
-							{(data) => (
+							{(user) => (
 								<small>
 									Logged in as :
-									<strong>{data.loggedUser}</strong>
+									<strong> {user.emailId}</strong>
 								</small>
 
 							)}
