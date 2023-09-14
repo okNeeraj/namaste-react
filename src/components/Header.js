@@ -1,10 +1,13 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 
 import UserContext from '../data/UserContext';
 
 const Header = () => {
-	const { loggedUser } = useContext(UserContext);
+	const { userId, firstName, userName, mobileNumber, emailId } = useContext(UserContext);
+	const cartItems = useSelector((store) => store.cart.items);
 
 	return (
 		<div className='header'>
@@ -25,14 +28,15 @@ const Header = () => {
 					<span className="material-symbols-outlined">
 						account_circle
 					</span>
-					<span>{loggedUser}</span>
+					<span>{firstName}</span>
 				</Link>
 
-				<a href='#' className='nav-link me-3'>
+				<Link to={'/checkout'} className='nav-link me-3 position-relative'>
 					<span className="material-symbols-outlined">
 						shopping_cart
 					</span>
-				</a>
+					<span className='cart-count'>{cartItems.length}</span>
+				</Link>
 			</div>
 		</div>
 	)

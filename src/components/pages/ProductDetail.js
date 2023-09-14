@@ -1,15 +1,20 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useParams, useLocation } from "react-router-dom";
 
 import { productDetailMock } from "../../utils/mockData";
 import { ProductShimmerDetail } from "../Shimmer";
 import ProductInfo from "../ProductInfo";
+import { addItem, removeItem, clearCart } from "../../store/cartSlice";
+import UserContext from "../../data/UserContext";
 
 const ProductDetail = () => {
 	const [productDetail, setProductDetails] = useState(null);
 	const [showIndex, setShowIndex] = useState(null);
+	const { userId } = useContext(UserContext);
 	const location = useLocation();
 	const { productId } = useParams();
+	const dispatch = useDispatch();
 
 	const productInformation = [
 		{ id: 'ryffr', title: 'Return & Refund Policy', body: "This is the first item's accordion body. It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the .accordion-body, though the transition does limit overflow." },
@@ -42,11 +47,14 @@ const ProductDetail = () => {
 		}
 	};
 
-
 	if (productDetail === null) {
 		return <ProductShimmerDetail />
 	}
 	const { title, category, image, price, rating, description, sections } = productDetail;
+
+	const handlerAddItem = (item) => {
+		dispatch(addItem(item))
+	}
 
 	return (
 		<div className="page-section product-details">
@@ -93,14 +101,14 @@ const ProductDetail = () => {
 						</div>
 
 						<div className="product-actions">
-							<a href="#" className="btn btn-lg btn-primary">
+							<button className="btn btn-lg btn-primary" onClick={() => handlerAddItem(productDetail)}>
 								<span className="icon-lg material-symbols-outlined">shopping_bag</span>
 								<span>ADD TO BAG</span>
-							</a>
-							<a href="#" className="btn btn-lg btn-secondary">
+							</button>
+							<button className="btn btn-lg btn-secondary">
 								<span className="icon-lg material-symbols-outlined">favorite</span>
 								<span>WISHLIST</span>
-							</a>
+							</button>
 						</div>
 						<div className="product-desc mb-4">
 							<h4 className="mb-2">Product Details</h4>

@@ -1,11 +1,18 @@
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addItem } from "../store/cartSlice";
 import { BASE_URL } from "../utils/constants";
 
 const ProductCard = (props) => {
 	const { id, title, category, image, price } = props.product;
 	const { rate, count } = props.product.rating;
+	const dispatch = useDispatch();
+
+	const handlerAddItem = (item) => {
+		dispatch(addItem(item))
+	}
 	return (
-		<div className="product-item">
+		<div className="product-item pb-0">
 			<Link to={`${BASE_URL}/product/${id}`}>
 				<div className="product-thumb">
 					<img src={image} />
@@ -24,6 +31,9 @@ const ProductCard = (props) => {
 						</span>
 						<span className="rating-count">{count}</span>
 					</div>
+				</div>
+				<div className="product-act">
+					<button className="btn" onClick={() => handlerAddItem(props.product)}>Add To Bag</button>
 				</div>
 			</div>
 		</div>
