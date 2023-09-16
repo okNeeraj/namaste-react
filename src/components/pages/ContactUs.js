@@ -15,6 +15,10 @@ const ContactUs = () => {
 									<input type="text" className="form-control" placeholder="Enter Name" />
 								</div>
 								<div className="col-12 mb-3">
+									<label>Email</label>
+									<input type="text" className="form-control" placeholder="Enter Name" />
+								</div>
+								<div className="col-12 mb-3">
 									<label>Your Message</label>
 									<textarea className="form-control" placeholder="Enter Your Message" />
 								</div>
