@@ -2,17 +2,31 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import ContactUs from "../pages/ContactUs";
 
-test("Contact us component should be render", () => {
-	render(<ContactUs />);
-	const heading = screen.getByRole('heading');
+describe('ContactUs Component', () => {
+	beforeAll(() => {
+		// console.log('beforeAll')
+	});
 
-	// Assertion
-	expect(heading).toBeInTheDocument();
-});
+	beforeEach(() => {
+		render(<ContactUs />);
+	});
 
-test("Contact us component should render button", () => {
-	render(<ContactUs />);
+	afterEach(() => {
+		// console.log('afterEach')
+	});
 
-	const button = screen.getByRole('button');
-	expect(button).toBeInTheDocument();
+	afterAll(() => {
+		// console.log('afterAll')
+	});
+
+
+	it('Should contain a button', () => {
+		const button = screen.getByRole('button');
+		expect(button).toBeInTheDocument();
+	});
+
+	it("Should contain heading", () => {
+		const heading = screen.getByRole('heading');
+		expect(heading).toBeInTheDocument();
+	});
 });

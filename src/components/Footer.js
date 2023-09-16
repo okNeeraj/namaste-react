@@ -1,6 +1,6 @@
 const Footer = () => {
 	return (
-		<div className='footer'>
+		<div className='footer' data-testid="footer">
 			<div className="f-content">
 				<h3>Get to Know Us</h3>
 				<div className="f-items">
@@ -12,9 +12,8 @@ const Footer = () => {
 			<div className="f-content">
 				<h3>Connect With Us</h3>
 				<div className="f-items">
-					<a href="#">About Us</a>
-					<a href="#">Careers</a>
-					<a href="#">Press Release</a>
+					<a href="#">Twitter</a>
+					<a href="#">Email</a>
 				</div>
 			</div>
 			<div className="f-content">
