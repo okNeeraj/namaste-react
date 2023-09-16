@@ -55,6 +55,7 @@ const ProductList = lazy(() => import('./components/pages/ProductList'));
 const ProductDetail = lazy(() => import('./components/pages/ProductDetail'));
 const UserClass = lazy(() => import('./components/pages/UserClass'));
 const Cart = lazy(() => import('./components/pages/Cart'));
+const ContactUs = lazy(() => import('./components/pages/ContactUs'));
 const Error = lazy(() => import('./components/pages/Error'));
 
 const App = () => {
@@ -112,6 +113,10 @@ const router = createBrowserRouter([
 			{
 				path: 'profile',
 				element: <UserClass />
+			},
+			{
+				path: 'contact-us',
+				element: <ContactUs />
 			}
 		],
 		errorElement: <Error />

@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 
 
 import UserContext from '../data/UserContext';
+import { BASE_URL } from '../utils/constants';
 
 const Header = () => {
 	const { userId, firstName, userName, mobileNumber, emailId } = useContext(UserContext);
@@ -22,6 +23,7 @@ const Header = () => {
 				<Link to={'/'} className='nav-link'>Men's Fashion</Link>
 				<Link to={'/'} className='nav-link'>Women's Fashion</Link>
 				<Link to={'/'} className='nav-link'>Sports</Link>
+				<Link to={`${BASE_URL}/contact-us`} className='nav-link'>Contact Us</Link>
 			</div>
 			<div className='nav-list'>
 				<Link to={'/profile'} className='nav-link d-flex gap-2 me-2'>
